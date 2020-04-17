@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Quanda.Areas.Identity.Data;
 
@@ -16,5 +17,6 @@ namespace Quanda.Models
         public Author Author { get; set; }
         public int QuestionId { get; set; }
         public Question Question { get; set; }
+        public IList<Rating> Ratings { get; set; }
     }
 }

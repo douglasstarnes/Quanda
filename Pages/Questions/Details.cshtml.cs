@@ -26,7 +26,7 @@ namespace Quanda.Pages_Questions
         }
         public async Task<IActionResult> OnGet(int questionId)
         {
-            Question = context.Questions.Include(q => q.Answers).Include(q => q.Author).FirstOrDefault(q => q.QuestionId == questionId);
+            Question = context.Questions.Include(q => q.Answers).ThenInclude(a => a.Ratings).Include(q => q.Author).FirstOrDefault(q => q.QuestionId == questionId);
             Author = await userManager.GetUserAsync(User);
             if (Question == null)
             {

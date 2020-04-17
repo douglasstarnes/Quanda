@@ -19,5 +19,6 @@ namespace Quanda.Models
         public string AuthorId { get; set; }
         public Author Author { get; set; }
         public IList<Answer> Answers { get; set; }
+        public IList<Rating> Ratings { get; set; }
     }
 }

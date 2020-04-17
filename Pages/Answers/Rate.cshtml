@@ -1,0 +1,15 @@
+@page "{answerId}"
+@model Quanda.Pages.Answers.RateModel
+@{
+    ViewData["Title"] = "Rate";
+}
+
+<h1>Rate</h1>
+
+<div class="alert alert-info">
+    Do you want to upvote <b>@Model.Answer.AnswerText</b>?
+</div>
+<form method="post">
+    <input type="submit" class="btn btn-primary" value="Yes"/>
+    <a class="btn btn-secondary" asp-page="../Questions/Details" asp-route-questionId="@Model.Answer.QuestionId">I Changed My Mind</a>
+</form>

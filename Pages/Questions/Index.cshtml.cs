@@ -21,7 +21,7 @@ namespace Quanda.Pages.Questions
         }
         public void OnGet()
         {
-            Questions = context.Questions.Include(q => q.Answers).ToList();
+            Questions = context.Questions.Include(q => q.Answers).Include(q => q.Ratings).ToList();
         }
     }
 }

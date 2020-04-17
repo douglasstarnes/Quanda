@@ -29,6 +29,7 @@ namespace Quanda
             services.AddRazorPages()
                 .AddRazorPagesOptions(options => {
                     options.Conventions.AuthorizeFolder("/Questions");
+                    options.Conventions.AuthorizeFolder("/Answers");
                     options.Conventions.AllowAnonymousToPage("/Questions/Index");
                     options.Conventions.AllowAnonymousToPage("/Questions/Details");
                 });

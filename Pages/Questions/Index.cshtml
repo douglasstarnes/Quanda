@@ -21,7 +21,7 @@ else
             <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Answers</th>
-                <th scope="col">Rating</th>
+                <th scope="col">Ratings</th>
             </tr>
         </thead>
         @foreach(var question in Model.Questions)
@@ -29,7 +29,7 @@ else
             <tr>
                 <td><a asp-page="./Details" asp-route-questionId="@question.QuestionId">@question.QuestionTitle</a></td>
                 <td>@question.Answers.Count.ToString()</td>
-                <td></td>
+                <td>@question.Ratings.Count.ToString()</td>
             </tr>
             
         }
