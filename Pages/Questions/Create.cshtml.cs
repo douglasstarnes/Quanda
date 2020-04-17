@@ -4,17 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Quanda.Areas.Identity.Data;
 using Quanda.Models;
 
 namespace Quanda.Pages.Questions
 {
     public class CreateModel : PageModel
     {
-        private readonly QuandaDbContext context;
+        private readonly QuandaIdentityDbContext context;
         [BindProperty]
         public Question Question { get; set; }
 
-        public CreateModel(QuandaDbContext context)
+        public CreateModel(QuandaIdentityDbContext context)
         {
             this.context = context;
         }
