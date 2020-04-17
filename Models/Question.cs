@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Quanda.Areas.Identity.Data;
 
 namespace Quanda.Models
 {
@@ -14,5 +15,7 @@ namespace Quanda.Models
         public string QuestionText { get; set; }
         public DateTime Created { get; set; }
         public DateTime Edited { get; set; }
+        public string AuthorId { get; set; }
+        public Author Author { get; set; }
     }
 }

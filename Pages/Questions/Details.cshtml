@@ -6,9 +6,18 @@
 
 <h1>Details</h1>
 
+@if (Model.Author != null)
+{
+    <div>
+        <a class="btn btn-primary" asp-page="./Edit" asp-route-questionId="@Model.Question.QuestionId">Edit</a>
+        <a class="btn btn-danger" asp-page="./Delete" asp-route-questionId="@Model.Question.QuestionId">Delete</a>
+    </div>
+}
+
+
 <div>
-    <a class="btn btn-primary" asp-page="./Edit" asp-route-questionId="@Model.Question.QuestionId">Edit</a>
-    <a class="btn btn-danger" asp-page="./Delete" asp-route-questionId="@Model.Question.QuestionId">Delete</a>
+    <b>Author:</b><br/>
+    <span>@Model.Question.Author.UserName</span>
 </div>
 
 <div>

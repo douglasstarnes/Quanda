@@ -9,7 +9,7 @@ using Quanda.Areas.Identity.Data;
 namespace Quanda.Migrations
 {
     [DbContext(typeof(QuandaIdentityDbContext))]
-    [Migration("20200417171922_Initial")]
+    [Migration("20200417173112_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -220,6 +220,9 @@ namespace Quanda.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("TEXT");
 
@@ -235,6 +238,8 @@ namespace Quanda.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("QuestionId");
+
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Questions");
                 });
@@ -288,6 +293,13 @@ namespace Quanda.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Quanda.Models.Question", b =>
+                {
+                    b.HasOne("Quanda.Areas.Identity.Data.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
                 });
 #pragma warning restore 612, 618
         }

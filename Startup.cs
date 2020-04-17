@@ -26,7 +26,12 @@ namespace Quanda
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddDbContext<QuandaDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("Quanda")));
-            services.AddRazorPages();
+            services.AddRazorPages()
+                .AddRazorPagesOptions(options => {
+                    options.Conventions.AuthorizeFolder("/Questions");
+                    options.Conventions.AllowAnonymousToPage("/Questions/Index");
+                    options.Conventions.AllowAnonymousToPage("/Questions/Details");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

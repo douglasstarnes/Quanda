@@ -47,22 +47,6 @@ namespace Quanda.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Questions",
-                columns: table => new
-                {
-                    QuestionId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    QuestionTitle = table.Column<string>(nullable: false),
-                    QuestionText = table.Column<string>(nullable: false),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Edited = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Questions", x => x.QuestionId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -168,6 +152,29 @@ namespace Quanda.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Questions",
+                columns: table => new
+                {
+                    QuestionId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    QuestionTitle = table.Column<string>(nullable: false),
+                    QuestionText = table.Column<string>(nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    Edited = table.Column<DateTime>(nullable: false),
+                    AuthorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Questions", x => x.QuestionId);
+                    table.ForeignKey(
+                        name: "FK_Questions_AspNetUsers_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -204,6 +211,11 @@ namespace Quanda.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Questions_AuthorId",
+                table: "Questions",
+                column: "AuthorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
