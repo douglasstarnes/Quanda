@@ -1,0 +1,37 @@
+@page
+@model Quanda.Pages.Questions.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div>
+    <a class="btn btn-primary" asp-page="./Create">New Question</a>
+</div>
+
+@if(Model.Questions.Count == 0)
+{
+    <div class="alert alert-info" role="alert">No questions found!</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Answers</th>
+                <th scope="col">Rating</th>
+            </tr>
+        </thead>
+        @foreach(var question in Model.Questions)
+        {
+            <tr>
+                <td><a asp-page="./Details" asp-route-questionId="@question.QuestionId">@question.QuestionTitle</a></td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+        }
+    </table>
+}

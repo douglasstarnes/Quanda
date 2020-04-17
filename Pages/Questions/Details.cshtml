@@ -1,0 +1,32 @@
+@page "{questionId}"
+@model Quanda.Pages_Questions.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <a class="btn btn-primary" asp-page="./Edit" asp-route-questionId="@Model.Question.QuestionId">Edit</a>
+    <a class="btn btn-danger" asp-page="./Delete" asp-route-questionId="@Model.Question.QuestionId">Delete</a>
+</div>
+
+<div>
+    <b>Title:</b><br/>
+    <span>@Model.Question.QuestionTitle</span>
+</div>
+
+<div>
+    <b>Description:</b><br/>
+    <span>@Model.Question.QuestionText</span>
+</div>
+
+<div>
+    <b>Created:</b><br/>
+    <span>@Model.Question.Created.ToShortDateString() @Model.Question.Created.ToShortTimeString()</span>
+</div>
+
+<div>
+    <b>Edited:</b><br/>
+    <span>@Model.Question.Edited.ToShortDateString() @Model.Question.Edited.ToShortTimeString()</span>
+</div>
