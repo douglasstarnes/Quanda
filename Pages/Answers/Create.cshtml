@@ -1,0 +1,26 @@
+@page "{questionId}"
+@model Quanda.Pages.Answers.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<div>
+    <b>Title:</b><br/>
+    <span>@Model.Question.QuestionTitle</span>
+</div>
+
+<div>
+    <b>Description:</b><br/>
+    <span>@Model.Question.QuestionText</span>
+</div>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.Answer.AnswerText"></label>
+        <input class="form-control" asp-for="@Model.Answer.AnswerText" />
+        <span class="font-weight-bold text-danger" asp-validation-for="@Model.Answer.AnswerText"></span>
+    </div>  
+    <input class="btn btn-primary" type="submit" value="Answer" />
+</form>

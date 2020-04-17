@@ -28,7 +28,7 @@ else
         {
             <tr>
                 <td><a asp-page="./Details" asp-route-questionId="@question.QuestionId">@question.QuestionTitle</a></td>
-                <td></td>
+                <td>@question.Answers.Count.ToString()</td>
                 <td></td>
             </tr>
             

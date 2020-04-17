@@ -12,6 +12,9 @@
         <a class="btn btn-primary" asp-page="./Edit" asp-route-questionId="@Model.Question.QuestionId">Edit</a>
         <a class="btn btn-danger" asp-page="./Delete" asp-route-questionId="@Model.Question.QuestionId">Delete</a>
     </div>
+    <div>
+        <a class="btn btn-success" asp-page="../Answers/Create" asp-route-questionId="@Model.Question.QuestionId">Answer This Question</a>
+    </div>
 }
 
 
@@ -39,3 +42,21 @@
     <b>Edited:</b><br/>
     <span>@Model.Question.Edited.ToShortDateString() @Model.Question.Edited.ToShortTimeString()</span>
 </div>
+
+@if (Model.Question.Answers.Count == 0)
+{
+    <div class="alert alert-info" role="alert">
+        No answers found
+    </div>
+}
+else
+{
+    <ul>
+        @foreach (var answer in Model.Question.Answers)
+        {
+            <li>
+                @answer.AnswerText
+            </li>
+        }
+    </ul>
+}

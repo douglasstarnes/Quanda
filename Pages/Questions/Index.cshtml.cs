@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Quanda.Areas.Identity.Data;
 using Quanda.Models;
 
@@ -20,7 +21,7 @@ namespace Quanda.Pages.Questions
         }
         public void OnGet()
         {
-            Questions = context.Questions.ToList();
+            Questions = context.Questions.Include(q => q.Answers).ToList();
         }
     }
 }
